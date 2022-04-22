@@ -2,7 +2,6 @@ const input = document.querySelector(".search-box").querySelector("input");
 const plusIcon = document.querySelector(".search-box").querySelector("i");
 const ul = document.querySelector(".todo-container").querySelector("ul");
 
-
 plusIcon.addEventListener("click", addToDo);
 
 function addToDo(){
@@ -16,30 +15,44 @@ function addToDo(){
     li.appendChild(trash);
     li.classList = "todo";
     ul.appendChild(li);
-    
-    savetodo();
+    savetodo(input.value);
     input.value = "";
 }
-function savetodo(){
-    let todos = [];
+function savetodo(todo){
+    let todos;
     if(localStorage.getItem("todos") === null){
         todos = [];
     }
     else{
         todos = JSON.parse(localStorage.getItem("todos"))
     }
-    todos.push(input.value)
+    todos.push(todo)
     localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-
 ul.addEventListener("click", donetrash);
-
 function donetrash(event){
-    if(event.target.classList = "i-tik fa-solid fa-check"){
-        event.target.classList.toggle("done-todo")
-        // ul.li.classList.add("done-todo")
+    const item = event.target;
+    const todo = item.parentElement;
+    if (item.classList[0] == 'i-tik') {
+        todo.classList.toggle("done-todo");
     }
+    if (item.classList[0] == 'i-trash') {
+        todo.remove();
+        removeFromLocalStorage(todo);
+    }
+}
+function removeFromLocalStorage(todo){
+    let todos;
+    const todoindex = todo.innerText;
+    if(localStorage.getItem("todos") === null){
+        todos = [];
+    }
+    else{
+        todos = JSON.parse(localStorage.getItem("todos"))
+    }
+    todos.splice(todos.indexOf(todoindex), 1)
+    localStorage.setItem("todos", JSON.stringify(todos));
 }
 // localStorage.clear();
 

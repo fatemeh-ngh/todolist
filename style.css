@@ -101,9 +101,10 @@ body{
     font-size: 1.5rem;
 }
 .done-todo{
-    /* text-decoration: line-through #0e2350 solid 2px; */
+    background-color: #7b7b7b56;
+    text-decoration: line-through;
 }
-.done-todo::after{
+/* .done-todo::after{
     content: "";
     background-color: #7474748d;
     width: 100%;
@@ -113,4 +114,4 @@ body{
     left: 0px;
     z-index: 10;
     border-radius: 50px;
-}
+} */
