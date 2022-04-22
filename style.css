@@ -4,7 +4,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 body{
-    height: 800px;
     background: rgb(238,174,198);
     background: linear-gradient(151deg, #eeaec6 19%, #94a4e9 94%);
 }
@@ -69,7 +68,7 @@ body{
 }
 .todo-container{
     margin-top: 3rem;
-    height: 100%;
+    height: 500px;
 }
 .todo-container ul{
     list-style: none;
@@ -99,19 +98,9 @@ body{
     height: 40px;
     color: #ff0000;
     font-size: 1.5rem;
+    margin-top: 10px;
 }
 .done-todo{
     background-color: #7b7b7b56;
     text-decoration: line-through;
 }
-/* .done-todo::after{
-    content: "";
-    background-color: #7474748d;
-    width: 100%;
-    height: 40px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 10;
-    border-radius: 50px;
-} */

@@ -1,10 +1,11 @@
 const input = document.querySelector(".search-box").querySelector("input");
 const plusIcon = document.querySelector(".search-box").querySelector("i");
 const ul = document.querySelector(".todo-container").querySelector("ul");
+const filtertodo = document.querySelector(".filter-todo");
 
 plusIcon.addEventListener("click", addToDo);
 
-function addToDo(){
+function addToDo(event){
     let li = document.createElement("li");
     let trash = document.createElement("i");
     trash.classList = "i-trash fa-solid fa-trash-can";
@@ -54,5 +55,31 @@ function removeFromLocalStorage(todo){
     todos.splice(todos.indexOf(todoindex), 1)
     localStorage.setItem("todos", JSON.stringify(todos));
 }
-// localStorage.clear();
+
+filtertodo.addEventListener("click", filteredtodo)
+function filteredtodo(event){
+    const todos = ul.childNodes;
+    todos.forEach(todo => {
+        switch(event.target.value){
+            case "All":
+                todo.style.display = "flex";
+                break;
+            case "Complated":
+                if(todo.classList.contains("done-todo")){
+                    todo.style.display = "flex";
+                }else{
+                    todo.style.display = "none";
+                };
+                break;
+            case "Uncompalted":
+                if(todo.classList.contains("done-todo")){
+                    todo.style.display = "none";
+                }else{
+                    todo.style.display = "flex";
+                };
+                break;
+        }
+    })
+    
+}
 
