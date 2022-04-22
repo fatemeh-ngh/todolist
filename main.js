@@ -82,4 +82,25 @@ function filteredtodo(event){
     })
     
 }
+document.addEventListener("DOMContentLoaded", loadtodo)
+function loadtodo(){
+    if(localStorage.getItem("todos") === null){
+        todos = [];
+    }
+    else{
+        todos = JSON.parse(localStorage.getItem("todos"))
+    }
+    todos.forEach(todo => {
+        let li = document.createElement("li");
+        let trash = document.createElement("i");
+        trash.classList = "i-trash fa-solid fa-trash-can";
+        let chek = document.createElement("i");
+        chek.classList= "i-tik fa-solid fa-check";
+        li.innerText = todo;
+        li.appendChild(chek);
+        li.appendChild(trash);
+        li.classList = "todo";
+        ul.appendChild(li);
+    })
+}
 
